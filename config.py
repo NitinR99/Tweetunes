@@ -1,4 +1,4 @@
-api_key = "wzUmqwrgXIaVisMOUrSXv3Hgd"
-api_secret = "fa9HgSTQahE3gw0UjUvydnmz2FzpgUkFhTC7RFB7W9YchTUyQb"
-access_token = "2654747796-MrlYijOP5CyqaEd1hzc25umNIH8H43WbHzwIsg5"
-token_secret = "SkyjIIJnr53GKRoL0bQYGbMXc8kxr2ueiJSpiQ06B7UbA"
+api_key = "-----insert api key here-----"
+api_secret = "-----insert api secret here-----"
+access_token = "-----insert access token here-----"
+token_secret = "-----insert token secret here-----"
