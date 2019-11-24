@@ -4,6 +4,7 @@ from twython import Twython
 from flask import request
 import tweepy
 import config
+import requests
 
 
 def sample_analyze_sentiment(text_content):
@@ -23,45 +24,8 @@ def sample_analyze_sentiment(text_content):
     # Get overall sentiment of the input document
     print(u"Document sentiment score: {}".format(response.document_sentiment.score))
     print(u"Document sentiment magnitude: {}".format(response.document_sentiment.magnitude))
-    
-
-def sample_classify_text(text_content):
-    """
-    Classifying Content in a String
-
-    Args:
-
-      text_content The text content to analyze. Must include at least 20 words.
-    """
-
-    client = language_v1.LanguageServiceClient()
-
-    # text_content = 'That actor on TV makes movies in Hollywood and also stars in a variety of popular new TV shows.'
-
-    # Available types: PLAIN_TEXT, HTML
-    type_ = enums.Document.Type.PLAIN_TEXT
-
-    # Optional. If not specified, the language is automatically detected.
-    # For list of supported languages:
-    # https://cloud.google.com/natural-language/docs/languages
-    #language = "en"
-    document = {"content": text_content, "type": type_}
-
-    response = client.classify_text(document)
-    # Loop through classified categories returned from the API
-    
-    """
-    for category in response.categories:
-        # Get the name of the category representing the document.
-        # See the predefined taxonomy of categories:
-        # https://cloud.google.com/natural-language/docs/categories
-        print(u"Category name: {}".format(category.name))
-        # Get the confidence. Number representing how certain the classifier
-        # is that this category represents the provided text.
-        print(u"Confidence: {}".format(category.confidence))
-    """
-    return response.categories
-    
+    return response.document_sentiment.score, response.document_sentiment.magnitude
+        
     
 twitter = Twython(config.api_key, config.api_secret)
 
@@ -88,4 +52,20 @@ twitter = Twython(config.api_key, config.api_secret,
 
 print(twitter.get_home_timeline())
 sample_analyze_sentiment(twitter.get_home_timeline())
+
+"""SPOTIFY API"""
+
+endpoint_url = "https://api.spotify.com/v1/recommendations?"
+
+limit = 20
+energy = magnitude/5.5
+valence = (sentiment + 1)/2
+
+query = f'{endpoint_url}limit={limit}&energy={energy}&valence={valence}'
+
+response =requests.get(query, 
+               headers={"Content-Type":"application/json", 
+                        "Authorization":"Bearer YOUR_TOKEN_HERE"})
+
+
 
