@@ -44,11 +44,13 @@ def sample_classify_text(text_content):
     # Optional. If not specified, the language is automatically detected.
     # For list of supported languages:
     # https://cloud.google.com/natural-language/docs/languages
-    language = "en"
-    document = {"content": text_content, "type": type_, "language": language}
+    #language = "en"
+    document = {"content": text_content, "type": type_}
 
     response = client.classify_text(document)
     # Loop through classified categories returned from the API
+    
+    """
     for category in response.categories:
         # Get the name of the category representing the document.
         # See the predefined taxonomy of categories:
@@ -57,7 +59,8 @@ def sample_classify_text(text_content):
         # Get the confidence. Number representing how certain the classifier
         # is that this category represents the provided text.
         print(u"Confidence: {}".format(category.confidence))
-
+    """
+    return response.categories
     
     
 twitter = Twython(config.api_key, config.api_secret)
