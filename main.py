@@ -22,8 +22,8 @@ def sample_analyze_sentiment(text_content):
     
     response = client.analyze_sentiment(document, encoding_type=encoding_type)
     # Get overall sentiment of the input document
-    print(u"Document sentiment score: {}".format(response.document_sentiment.score))
-    print(u"Document sentiment magnitude: {}".format(response.document_sentiment.magnitude))
+    #print(u"Document sentiment score: {}".format(response.document_sentiment.score))
+    #print(u"Document sentiment magnitude: {}".format(response.document_sentiment.magnitude))
     return response.document_sentiment.score, response.document_sentiment.magnitude
         
     
@@ -65,7 +65,12 @@ query = f'{endpoint_url}limit={limit}&energy={energy}&valence={valence}'
 
 response =requests.get(query, 
                headers={"Content-Type":"application/json", 
-                        "Authorization":"Bearer YOUR_TOKEN_HERE"})
+                        "Authorization":"87ff7cfc91704fa8aa827830b0a60544"})
 
+json_response = response.json()
+
+for i in json_response['tracks']:
+            uris.append(i)
+            print(f"\"{i['name']}\" by {i['artists'][0]['name']}")
 
 
