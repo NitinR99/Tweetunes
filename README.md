@@ -1,8 +1,5 @@
 # tweetunes
 
-To run:
+Fork of https://github.com/mustafaAlwindawi/tweetunes, where I worked on the front end website design and twitter login implementation using OAuth
 
-1) install google-cloud, twython and flask
-2) run in the terminal export GOOGLE_APPLICATION_CREDENTIALS="My Project-65926075e479.json"
-3) run main.py
-4) Link to website: tweetunes.space
+Tweetunes provides a unique service to its user. Once you log into Tweetunes, the web application will read your tweets and understand the sentiments behind them, to generate a one-of-a-kind spotify playlist.
